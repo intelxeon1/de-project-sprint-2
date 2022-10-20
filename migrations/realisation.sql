@@ -55,6 +55,7 @@ transfer_type_id int4,
 shipping_country_id int4,
 agreementid int4,
 
+PRIMARY KEY (shippingid),
 foreign key (transfer_type_id) references shipping_transfer(transfer_type_id),
 foreign key (shipping_country_id) references shipping_country_rates(shipping_country_id),
 foreign key (agreementid) references shipping_agreement(agreementid)
@@ -68,7 +69,8 @@ shippingid int8,
 status text ,
 state text ,
 shipping_start_fact_datetime timestamp NULL,
-shipping_end_fact_datetime timestamp null
+shipping_end_fact_datetime timestamp NULL,
+PRIMARY KEY (shippingid),
 )
 ;
 ----shipping_datamart
@@ -82,8 +84,8 @@ full_day_at_shipping    int4,
 is_shipping_finish numeric(1,0),
 delay_day_at_shipping  interval null,
 payment_amount numeric(14, 2) NULL,
-vat numeric(14, 2) null,
-profit numeric(14, 2) NULL
+vat numeric(14, 5) null,
+profit numeric(14, 4) NULL
 )
 ;
 ---fill tables
